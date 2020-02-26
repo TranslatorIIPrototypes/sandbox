@@ -3,7 +3,6 @@ WGET = /usr/bin/wget --timestamping --no-verbose
 OBO = http://purl.obolibrary.org/obo
 MONARCH = https://archive.monarchinitiative.org/latest/rdf
 
-
 OBO_SOURCES = mondo.owl \
 	      hp.owl \
 	      chebi.owl
@@ -12,6 +11,8 @@ MONARCH_SOURCES = reactome.ttl
 
 ALL_SOURCES = $(OBO_SOURCES) $(MONARCH_SOURCES)
 CSVS = $(ALL_SOURCES:=.csv)
+
+all: $(ALL_SOURCES) build/robot.jar $(CSVS) all-synonyms.csv
 
 build/:
 	mkdir -p build
@@ -38,7 +39,4 @@ $(CSVS): $(ALL_SOURCES) build/robot.jar
 
 all-synonyms.csv: $(CSVS)
 	cat *.csv | sort -u >all-synonyms.csv
-
-
-all: $(ALL_SOURCES) build/robot.jar $(CSVS) all-synonyms.csv
 
