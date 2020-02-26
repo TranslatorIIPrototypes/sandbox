@@ -3,7 +3,6 @@ with the fields iri, synonym type, synonym
 
 To run:
 
-  make all
+    make all
 
 To add ontologies or rdf sources adjust the ALL_SOURCES variable
-
