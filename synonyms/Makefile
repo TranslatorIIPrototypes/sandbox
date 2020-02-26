@@ -7,7 +7,7 @@ OBO_SOURCES = mondo.owl \
 	      hp.owl \
 	      chebi.owl
 
-MONARCH_SOURCES = reactome.ttl
+MONARCH_SOURCES = kegg.ttl
 
 ALL_SOURCES = $(OBO_SOURCES) $(MONARCH_SOURCES)
 CSVS = $(ALL_SOURCES:=.csv)
@@ -15,7 +15,7 @@ CSVS = $(ALL_SOURCES:=.csv)
 all: $(ALL_SOURCES) build/robot.jar $(CSVS) all-synonyms.csv
 
 build/:
-	mkdir -p build
+	mkdir --parents $@
 
 build/robot.jar: | build/
 	curl -L -o build/robot.jar \
